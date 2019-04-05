@@ -1,0 +1,64 @@
+  //-fx-background-color: #76a2ff;
+    //-fx-background-radius: 50px;
+
+
+
+
+
+.btn{
+    -fx-background-color: #f69
+}
+
+
+#btn{
+    -fx-background-color: red
+}
+
+#btn:hover{
+    -fx-background-color: red;
+}
+.btnA:hover {
+    -fx-background-color: white;
+    -fx-background-radius: 50px;    
+    -fx-font-size: 25;
+}
+
+#btnA:hover {
+    -fx-background-color: greenyellow;
+    -fx-background-radius: 50px;
+    -fx-font-size: 25;
+}
+
+.btnA:hover {
+    -fx-background-color: white;
+    -fx-background-radius: 50px;
+    -fx-font-size: 25;
+}
+
+#btnA:hover {
+    -fx-background-color: greenyellow;
+    -fx-background-radius: 50px;
+    -fx-font-size: 25;
+}
+
+
+
+btn{
+    -fx-background-color: #f69;
+    -fx-font-size: 25
+}
+
+.btn :hover{
+    -fx-background-color: #f69;
+    -fx-font-size: 25
+}
+
+
+#btn{
+    -fx-background-color: green
+}
+
+#btn :hover{
+    -fx-background-color: red;
+     -fx-font-size: 25
+}

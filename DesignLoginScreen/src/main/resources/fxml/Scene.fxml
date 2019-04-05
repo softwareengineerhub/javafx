@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="319.0" prefWidth="453.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.designloginscreen.FXMLController">
+    <children>
+        <Button fx:id="button" layoutX="14.0" layoutY="25.0" onAction="#handleButtonAction" text="Click Me!" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <JFXButton id="btn" fx:id="fxbtn" layoutX="143.0" layoutY="61.0" prefHeight="51.0" prefWidth="179.0" stylesheets="@../styles/Styles.css" text="Button 1" textFill="WHITE" />
+    </children>
+</AnchorPane>
