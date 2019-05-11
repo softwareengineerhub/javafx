@@ -13,3 +13,12 @@
 /FX/MyLayouts/dist/
 /FX/MyLayouts/build/
 /DesignLoginScreen/target
+/GluonMobile/backend/backend-api/cache
+/GluonMobile/backend/backend-api/log.txt
+/GluonMobile/backend/backend-api/target
+/GluonMobile/backend/backend-api/dependency-reduced-pom.xml
+/GluonMobile/backend/backend-api-web/target
+/GluonMobile/backend/backend-api-web/nb-configuration.xml
+/GluonMobile/FirstScreen/FirstScreenApp/build
+/GluonMobile/FirstScreen/.nb-gradle
+/GluonMobile/FirstScreen/.gradle
