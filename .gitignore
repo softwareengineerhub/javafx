@@ -22,3 +22,6 @@
 /GluonMobile/FirstScreen/FirstScreenApp/build
 /GluonMobile/FirstScreen/.nb-gradle
 /GluonMobile/FirstScreen/.gradle
+/hello-fx/target
+/hello-fx/.idea
+/hello-fx/hello-fx.iml
