@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="rootPane" prefHeight="524.0" prefWidth="1020.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.mycompany.denis.fx.signup.screen.FXMLController">
+   <children>
+      <ImageView fitHeight="590.0" fitWidth="600.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../nikhil-kumar-231465.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="-1.0" prefHeight="524.0" prefWidth="600.0" style="-fx-background-color: #7d01aec7;">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="53.0" layoutY="281.0" prefHeight="47.0" prefWidth="132.0" style="-fx-background-radius: 10px; -fx-background-color: #fff;" text="ABOUT US" textFill="#9911d3" />
+            <JFXButton layoutX="226.0" layoutY="282.0" prefHeight="47.0" prefWidth="132.0" style="-fx-border-color: #fff; -fx-border-radius: 10px;" text="SIGNIN" textFill="WHITE" />
+            <Label layoutX="63.0" layoutY="136.0" prefHeight="100.0" prefWidth="261.0" text="Create Your Own Account" textFill="#fcf8f8" wrapText="true">
+               <font>
+                  <Font name="Arial" size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXTextField focusColor="#9140a8" labelFloat="true" layoutX="661.0" layoutY="57.0" prefHeight="25.0" prefWidth="330.0" promptText="FIRST NAME" unFocusColor="#d7d7d7" />
+      <JFXTextField focusColor="#9140a8" labelFloat="true" layoutX="661.0" layoutY="122.0" prefHeight="25.0" prefWidth="330.0" promptText="LAST NAME" unFocusColor="#d7d7d7" />
+      <JFXTextField focusColor="#9140a8" labelFloat="true" layoutX="661.0" layoutY="190.0" prefHeight="25.0" prefWidth="330.0" promptText="USERNAME" unFocusColor="#d7d7d7" />
+      <JFXTextField focusColor="#9140a8" labelFloat="true" layoutX="663.0" layoutY="267.0" prefHeight="25.0" prefWidth="330.0" promptText="E-MAIL" unFocusColor="#d7d7d7" />
+      <JFXPasswordField focusColor="#9140a8" labelFloat="true" layoutX="663.0" layoutY="333.0" prefHeight="25.0" prefWidth="330.0" promptText="PASSWORD" unFocusColor="#d7d7d7" />
+      <JFXTextField focusColor="#9140a8" labelFloat="true" layoutX="665.0" layoutY="396.0" prefHeight="25.0" prefWidth="330.0" promptText="PHONE NUMBER" unFocusColor="#d7d7d7" />
+      <JFXToggleButton layoutX="640.0" layoutY="442.0" text="UNDER 18 ?" textFill="#6b6b6b" toggleColor="#9140a8">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXToggleButton>
+      <JFXButton buttonType="RAISED" layoutX="857.0" layoutY="451.0" prefHeight="47.0" prefWidth="132.0" ripplerFill="#bf78c2" style="-fx-background-radius: 10px; -fx-border-color: #8000a4; -fx-background-color: #fff; -fx-border-radius: 10px; -fx-border-width: 0.75;" text="GET STARTED" textFill="#9911d3" />
+   </children>
+</AnchorPane>

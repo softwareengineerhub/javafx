@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="rootPane" prefHeight="450.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.mycompany.denis.fx.vidoe.login.FXMLController">
+   <children>
+      <MediaView fx:id="mediaView" fitHeight="430.0" fitWidth="780.0" layoutX="14.0" layoutY="14.0" />
+      <Pane layoutX="441.0" layoutY="45.0" prefHeight="357.0" prefWidth="316.0" style="-fx-background-color: #ffffff67; -fx-background-radius: 90px;">
+         <effect>
+            <DropShadow color="#837b7b" />
+         </effect>
+         <children>
+            <Label layoutX="116.0" layoutY="63.0" text="YOUR LOGO" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField alignment="CENTER" focusColor="#405aa800" labelFloat="true" layoutX="62.0" layoutY="129.0" prefHeight="38.0" prefWidth="193.0" promptText="USERNAME" style="-fx-border-color: white; -fx-border-radius: 30px;" unFocusColor="#4d4d4d00" />
+            <JFXPasswordField alignment="CENTER" focusColor="#405aa800" labelFloat="true" layoutX="63.0" layoutY="199.0" prefHeight="38.0" prefWidth="193.0" promptText="PASSWORD" style="-fx-border-color: white; -fx-border-radius: 30px;" unFocusColor="#4d4d4d00" />
+            <JFXButton layoutX="81.0" layoutY="279.0" prefHeight="51.0" prefWidth="153.0" style="-fx-background-color: #ff6666; -fx-background-radius: 30px;" text="SIGNIN" textFill="#fcf9f9">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
