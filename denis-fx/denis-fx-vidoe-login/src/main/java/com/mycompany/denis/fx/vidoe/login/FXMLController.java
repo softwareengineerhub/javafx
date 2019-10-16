@@ -22,7 +22,7 @@ public class FXMLController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Media media = new Media("file:///C:/Users/dprokopiuk/Documents/NetBeansProjects/denis-fx-vidoe-login/src/main/resources/background.mp4");
+        Media media = new Media("file:///C:/background.mp4");
         MediaPlayer mp = new MediaPlayer(media);
         mp.setVolume(0);
         mp.setAutoPlay(true);
