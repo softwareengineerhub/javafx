@@ -53,7 +53,10 @@ public class MainApp extends Application {
 
     private HBox taskBar;
     private StackPane view;
-    private MediaPlayer mediaPlayer = new MediaPlayer(new Media("http://webcast-west.sun.com/oow2010.flv"));
+    //private MediaPlayer mediaPlayer = new MediaPlayer(new Media("http://webcast-west.sun.com/oow2010.flv"));
+    private MediaPlayer mediaPlayer = new MediaPlayer(new Media("https://github.com/mconf/bbbot/blob/master/bot/etc/video-sample.flv"));
+    
+
 
     @Override
     public void start(Stage stage) throws FileNotFoundException {
