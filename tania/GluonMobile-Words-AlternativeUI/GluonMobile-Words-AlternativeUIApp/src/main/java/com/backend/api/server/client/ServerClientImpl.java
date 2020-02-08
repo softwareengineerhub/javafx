@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
+
 public class ServerClientImpl implements ServerClient {
 
     private String host;
@@ -21,6 +22,7 @@ public class ServerClientImpl implements ServerClient {
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
+
     }
 
     @Override

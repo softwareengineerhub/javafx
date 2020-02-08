@@ -5,7 +5,6 @@ import com.backend.api.server.client.ServerClient;
 import com.backend.api.server.client.ServerClientImpl;
 import com.backend.api.server.data.MessageData;
 import javafx.scene.image.Image;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.*;
@@ -17,16 +16,16 @@ public class Details2Dao {
     private String host = "134.209.244.234";
     private int port = 8083;
 
-    public void cleanup() {
-        lastVisited = null;
+    public void cleanup(){
+        lastVisited=null;
     }
 
     public List<Details> findAllDetails(String categoryName) {
         MessageData messageData = new MessageData();
         messageData.setCategoryName(categoryName);
         serverClient = new ServerClientImpl(host, port);
-        lastVisited = (List<Details>) serverClient.readData(messageData);
-        return lastVisited;
+        lastVisited =  (List<Details>) serverClient.readData(messageData);
+        return  lastVisited;
     }
 
     private Details findDetailsByIndex(String categoryName, int detailsIndex) {
@@ -37,10 +36,10 @@ public class Details2Dao {
         return (Details) serverClient.readData(messageData);
     }
 
-    public void initAllDetailsPerCategory(String categoryName) {
-        Thread t = new Thread() {
+    public void initAllDetailsPerCategory(String categoryName){
+        Thread t = new Thread(){
 
-            public void run() {
+            public void run(){
                 findAllDetails(categoryName);
             }
         };
@@ -49,17 +48,17 @@ public class Details2Dao {
 
 
     public Details findDetail(String categoryName, int index) {
-        if (index < 0) {
+        if(index<0){
             return null;
         }
 
-        if (lastVisited == null) {
+        if(lastVisited==null){
             Details details = findDetailsByIndex(categoryName, index);
             initImage(details, categoryName, index);
             return details;
         }
 
-        if (index >= lastVisited.size()) {
+        if(index>=lastVisited.size()){
             return null;
         }
 
@@ -70,9 +69,9 @@ public class Details2Dao {
 
     private void initImage(Details details, String categoryName, int index) {
         byte[] data = details.getImageData();
-        try (InputStream in = new ByteArrayInputStream(data)) {
+        try(InputStream in = new ByteArrayInputStream(data)){
             details.setImage(new Image(in));
-        } catch (Exception ex) {
+        }catch(Exception ex){
             throw new RuntimeException(ex);
         }
     }
