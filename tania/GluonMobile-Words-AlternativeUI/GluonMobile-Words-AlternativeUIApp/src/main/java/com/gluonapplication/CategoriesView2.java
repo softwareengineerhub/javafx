@@ -1,35 +1,28 @@
 package com.gluonapplication;
 
 import com.backend.api.model.category.Category;
-import com.gluonhq.charm.glisten.control.*;
-import com.gluonhq.charm.glisten.layout.layer.PopupView;
+import com.gluonhq.charm.glisten.control.AppBar;
+import com.gluonhq.charm.glisten.control.CharmListCell;
+import com.gluonhq.charm.glisten.control.CharmListView;
+import com.gluonhq.charm.glisten.control.Toast;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
-import com.gluonhq.impl.charm.a.b.b.g;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-
-import java.io.*;
+import java.io.ByteArrayInputStream;
 
 import static com.gluonhq.charm.glisten.application.MobileApplication.HOME_VIEW;
-import static com.gluonhq.charm.glisten.control.Message.LENGTH_LONG;
 
 public class CategoriesView2 extends View {
     private GluonApplication gluonApplication;
