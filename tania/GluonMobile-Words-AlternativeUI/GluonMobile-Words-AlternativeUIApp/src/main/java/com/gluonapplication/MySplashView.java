@@ -21,6 +21,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 
+import java.net.URI;
+import java.nio.file.Paths;
+
 public class MySplashView  extends View {
 
     private GluonApplication gluonApplication;
@@ -62,7 +65,16 @@ public class MySplashView  extends View {
 
     private MediaView initMediaView(){
         MediaView mediaView = new MediaView();
-        Media media = new Media("file:///C:/background.mp4");
+        String uriValue = "";
+
+
+
+
+
+        //URI uri = URI.create("file://" + Paths.get("background.mp4").toAbsolutePath());
+        Media media = new Media(getURI().toString());
+
+        //Media media = new Media("file:///C:/background.mp4");
         MediaPlayer mp = new MediaPlayer(media);
         mp.setVolume(0);
         mp.setAutoPlay(true);
@@ -70,6 +82,14 @@ public class MySplashView  extends View {
         mediaView.setMediaPlayer(mp);
         mediaView.fitHeightProperty().bind(heightProperty);
         return mediaView;
+    }
+
+    private URI getURI(){
+        try {
+            return getClass().getResource("/background.mp4").toURI();
+        }catch (Throwable th){
+            throw new RuntimeException(th);
+        }
     }
 
     private Pane initPane(ProgressIndicator progressIndicator) {
