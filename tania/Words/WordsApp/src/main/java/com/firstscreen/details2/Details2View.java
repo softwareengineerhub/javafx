@@ -7,9 +7,12 @@ import com.firstscreen.FirstScreen;
 import com.firstscreen.animations.AnimationUtils;
 import com.firstscreen.details2.sound.SoundApi;
 import com.firstscreen.details2.sound.SoundApiImpl;
+import com.gluonhq.charm.down.Platform;
 import com.gluonhq.charm.down.Services;
 import com.gluonhq.charm.down.plugins.VideoService;
+import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
+import com.gluonhq.charm.glisten.control.ExceptionDialog;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import javafx.beans.property.DoubleProperty;
@@ -63,9 +66,10 @@ public class Details2View extends View {
     private Text textBottomB;
     SoundApi soundApi = new SoundApiImpl();
     int soundIndex;
+    Details detailsTmp = null;
 
-    public Details2View(FirstScreen mobileApplication){
-        this.mobileApplication=mobileApplication;
+    public Details2View(FirstScreen mobileApplication) {
+        this.mobileApplication = mobileApplication;
         flowPane = new VBox(10.0);
         //flowPane.setPadding(new Insets(20, 0, 20, 0));
         //flowPane = new FlowPane(Orientation.VERTICAL);
@@ -87,7 +91,7 @@ public class Details2View extends View {
 
 
     public void refresh(Category category) {
-        if(this.category!=null && !category.getName().equalsIgnoreCase(this.category.getName())) {
+        if (this.category != null && !category.getName().equalsIgnoreCase(this.category.getName())) {
             mobileApplication.detailsDao2.cleanup();
             selectedIndex = 0;
         }
@@ -96,20 +100,20 @@ public class Details2View extends View {
             root.setBottom(initBottomContent());
         }
         if (root.getCenter() == null) {
-           root.setCenter(flowPane);
+            root.setCenter(flowPane);
         }
         initCentralContent();
         setCenter(root);
     }
 
     private VBox initCentralContent() {
-        if(selectedIndex==0){
-            System.out.println("category.getName()="+category.getName());
+        if (selectedIndex == 0) {
+            System.out.println("category.getName()=" + category.getName());
             System.out.println("selected index = 0");
             flowPane.getChildren().clear();
             details = category.getFirstDetails();
-            System.out.println("details="+details);
-            
+            System.out.println("details=" + details);
+
             if (details.getImage() == null) {
                 byte[] data = details.getImageData();
                 try (InputStream in = new ByteArrayInputStream(data)) {
@@ -120,7 +124,7 @@ public class Details2View extends View {
             }
 
             imgNode = new ImageView(details.getImage());
-            imgNode.setFitWidth(widthProperty.getValue()*0.9);
+            imgNode.setFitWidth(widthProperty.getValue() * 0.9);
             imgNode.setFitHeight(250);
 
             prev = new ImageView(new Image(getClass().getResourceAsStream("/prev2.png")));
@@ -131,30 +135,63 @@ public class Details2View extends View {
             next.setFitHeight(65);
 
             next.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
-                if(!AnimationUtils.canStartNewAnimation()){
-                    return;
-                }
-                Details detailsTmp = mobileApplication.detailsDao2.findDetail(category.getName(), selectedIndex + 1);
-                if(detailsTmp!=null) {
-                    details=detailsTmp;
-                    AnimationUtils.animateDetailsChanged(imgNode, details.getImage());
-                    textTopA.setText(details.getDescriptionA());
-                    textTopB.setText(details.getDescriptionB());
-                    textBottomA.setText(details.getDescriptionC());
-                    textBottomB.setText(details.getDescriptionD());
-                    selectedIndex++;
 
+                if (selectedIndex == 0) {
+
+                    javafx.application.Platform.runLater(() -> {
+                        MobileApplication.getInstance().showLayer("DataLoad");
+                    });
+
+                    Runnable r = () -> {
+
+                        detailsTmp = mobileApplication.detailsDao2.findDetail(category.getName(), selectedIndex + 1);
+                        if (detailsTmp != null) {
+                            details = detailsTmp;
+                            AnimationUtils.animateDetailsChanged(imgNode, details.getImage());
+                            textTopA.setText(details.getDescriptionA());
+                            textTopB.setText(details.getDescriptionB());
+                            textBottomA.setText(details.getDescriptionC());
+                            textBottomB.setText(details.getDescriptionD());
+                            selectedIndex++;
+                            detailsTmp = null;
+                        }
+                        javafx.application.Platform.runLater(() -> {
+                            MobileApplication.getInstance().hideLayer("DataLoad");
+                        });
+                    };
+                    Thread t = new Thread(r);
+                    t.start();
                 }
+
+                if (selectedIndex != 0) {
+
+                    if (!AnimationUtils.canStartNewAnimation()) {
+                        return;
+                    }
+
+
+                    detailsTmp = mobileApplication.detailsDao2.findDetail(category.getName(), selectedIndex + 1);
+                    if (detailsTmp != null) {
+                        details = detailsTmp;
+                        AnimationUtils.animateDetailsChanged(imgNode, details.getImage());
+                        textTopA.setText(details.getDescriptionA());
+                        textTopB.setText(details.getDescriptionB());
+                        textBottomA.setText(details.getDescriptionC());
+                        textBottomB.setText(details.getDescriptionD());
+                        selectedIndex++;
+                    }
+                }
+
             });
 
             prev.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
-                if(!AnimationUtils.canStartNewAnimation()){
+                if (!AnimationUtils.canStartNewAnimation()) {
                     return;
                 }
 
-                Details detailsTmp = mobileApplication.detailsDao2.findDetail(category.getName(), selectedIndex-1);
-                if(detailsTmp!=null) {
-                    details=detailsTmp;
+                Details detailsTmp = mobileApplication.detailsDao2.findDetail(category.getName(), selectedIndex - 1);
+                if (detailsTmp != null) {
+                    details = detailsTmp;
                     AnimationUtils.animateDetailsChanged(imgNode, details.getImage());
                     textTopA.setText(details.getDescriptionA());
                     textTopA.setText(details.getDescriptionB());
@@ -188,26 +225,20 @@ public class Details2View extends View {
             textBottomB.setFill(Color.valueOf("white"));
 
             flowPane.setAlignment(Pos.CENTER);
-            flowPane.getChildren().addAll(textTopB,textTopA, imgNode, textBottomA,textBottomB, controlsBox);
-
-
-
-
+            flowPane.getChildren().addAll(textTopB, textTopA, imgNode, textBottomA, textBottomB, controlsBox);
 
 
             mobileApplication.detailsDao2.initAllDetailsPerCategory(category.getName());
 
         } else {
-      //      int itemPosition = flowPane.getChildren().indexOf(imgNode);
+            //      int itemPosition = flowPane.getChildren().indexOf(imgNode);
 
             details = mobileApplication.detailsDao2.findDetail(category.getName(), selectedIndex);
 
 
-
-
 //            imgNode = new ImageView(details.getImage());
-  //          imgNode.setFitWidth(widthProperty.getValue()*0.9);
-    //        imgNode.setFitHeight(250);
+            //          imgNode.setFitWidth(widthProperty.getValue()*0.9);
+            //        imgNode.setFitHeight(250);
 
 
             //flowPane.getChildren().set(itemPosition, imgNode);
@@ -223,20 +254,14 @@ public class Details2View extends View {
         }
 
 
-
-
         //flowPane.getChildren().clear();
-
-
 
 
         //List<Details> list =  mobileApplication.detailsDao2.findAllDetails(category.getName());
 //mobileApplication.detailsDao2.findDetail(category.getName(), selectedIndex);
 
 
-
-
-        Charset dfset = Charset.defaultCharset();
+//        Charset dfset = Charset.defaultCharset();
         //out.println(dfset.name());
 
         //setTop(new Label("Cahrset: "+dfset.name()));
@@ -247,7 +272,7 @@ public class Details2View extends View {
         //setTop(new Text(new String(textByte, StandardCharsets.UTF_16)));
         //setTop(new Label("Charset: "+dfset.name()+";"+ new String(textByte, StandardCharsets.UTF_16)));
 
-       // setTop(new StringBuilder(""));
+        // setTop(new StringBuilder(""));
 
         //Charset dfset2 = Charset.forName("windows-1251");
         //byte[] textByte = "海龟".getBytes(dfset2);
@@ -263,20 +288,17 @@ public class Details2View extends View {
         }*/
 
 
-
-
-
-
-
         return flowPane;
     }
 
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setVisible(false);
-        appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> {}));
+        appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> {
+        }));
         appBar.setTitleText("Basic View");
-        appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> {}));
+        appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> {
+        }));
     }
 
     private HBox initBottomContent() {
@@ -305,33 +327,55 @@ public class Details2View extends View {
 
         imgNode.setEffect(effect);
         CommonAnimationUtils.animate(imgNode, effect);
+
+
         imgNode.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
 
 
-                        if (details == null) {
-                            return;
+                    if (details == null) {
+                        return;
+                    }
+
+
+                    if (language.isEmpty()) {
+                        Services.get(VideoService.class).ifPresent(video -> {
+                            video.stop();
+                            video.hide();
+                        });
+                        mobileApplication.switchView("category2_view");
+                        //mobileApplication.switchView(HOME_VIEW);
+                        return;
+                    }
+
+
+                    String url = soundApi.getUrl(category.getName(), "d" + selectedIndex, language);
+                    //        System.out.println("url="+url);
+
+                    com.gluonhq.charm.glisten.control.Alert alert = new com.gluonhq.charm.glisten.control.Alert(Alert.AlertType.INFORMATION);
+
+
+                    Services.get(VideoService.class).ifPresent(video -> {
+                        try {
+                            //     alert.setContentText(url);
+
+
+                            video = video.getClass().newInstance();
+                            video.stop();
+                            video.getPlaylist().clear();
+                            video.getPlaylist().add(url);
+
+                            video.play();
+                            //   alert.showAndWait();
+                        } catch (Exception ex) {
+                            ExceptionDialog exceptionDialog = new ExceptionDialog();
+                            exceptionDialog.setException(ex);
+                            exceptionDialog.showAndWait();
                         }
+                    });
 
+                    //javafx.application.Platform.runLater(()->{
 
-                        if (language.isEmpty()) {
-                            Services.get(VideoService.class).ifPresent(video -> {
-                                video.stop();
-                                video.hide();
-                            });
-                            mobileApplication.switchView("category2_view");
-                            //mobileApplication.switchView(HOME_VIEW);
-                            return;
-                        }
-
-
-            String url = soundApi.getUrl(category.getName(), "d"+selectedIndex, language);
-
-
-
-
-
-
-            Services.get(VideoService.class).ifPresent(video -> {
+            /*Services.get(VideoService.class).ifPresent(video -> {
                 try {
 
                     video = video.getClass().newInstance();
@@ -353,17 +397,19 @@ public class Details2View extends View {
 
                     //Details2View.this.setTop(new Label(url));
 
-                }catch(Throwable th){
-
+                }catch(Exception ex){
+                    ExceptionDialog exceptionDialog = new ExceptionDialog();
+                    exceptionDialog.setException(ex);
+                    exceptionDialog.showAndWait();
                 }
 
 
-            });
+            });*/
 
 
-                     //   root.setCenter(initCentralContent());
+                    //   root.setCenter(initCentralContent());
 
-                    }
+                }
 
         );
 
@@ -372,18 +418,6 @@ public class Details2View extends View {
         menu.getChildren().add(imgNode);
         return menu;
     }
-
-
-    private void showError(Throwable ex){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        //alert.setTitle(ex.getMessage());
-       // alert.setHeaderText("Results:");
-
-        alert.setContentText(ex.getMessage());
-
-        alert.showAndWait();
-    }
-
 
 }
 

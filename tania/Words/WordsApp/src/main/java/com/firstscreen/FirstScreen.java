@@ -9,9 +9,11 @@ import com.firstscreen.login.LoginView;
 import com.gluonhq.charm.down.Services;
 import com.gluonhq.charm.down.plugins.RuntimeArgsService;
 import com.gluonhq.charm.glisten.application.MobileApplication;
+import com.gluonhq.charm.glisten.control.ProgressIndicator;
 import com.gluonhq.charm.glisten.license.License;
 import com.gluonhq.charm.glisten.visual.Swatch;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -53,19 +55,59 @@ public class FirstScreen extends MobileApplication {
         addViewFactory("details2_view", () -> {
             return detailsView2;
         });
+
+        addLayerFactory("DataLoad", ()->{
+            ProgressIndicator pi = new ProgressIndicator();
+            pi.setRadius(45);
+            return LayerFactory.createLayer(pi);
+        });
         //categoryView.mobileApplication = this;
         //detailsView.mobileApplication = this;
     }
+
+
+
+
+    /*
+
+
+
+    Runnable r = ()->{
+
+            while(gluonApplication.categories2Dao.getCurrentCategories()==null){
+            }
+            javafx.application.Platform.runLater(()->{gluonApplication.switchView("CATEGORY_VIEW");});
+
+        };
+
+        Thread t = new Thread(r);
+        t.start();
+
+     */
+
+
+
 
     @Override
     public void postInit(Scene scene) {
         loginView.startBtn.setOnAction(e -> {
                     try {
-                        categoryView2.refreshFirst();
+                        MobileApplication.getInstance().showLayer("DataLoad");
+                        Runnable r = ()->{
+                            categoryView2.refreshFirst();
+                            javafx.application.Platform.runLater(()->{
+                                switchView("category2_view");
+                                MobileApplication.getInstance().hideLayer("DataLoad");
+                            });
+                        };
+
+                        Thread t = new Thread(r);
+                        t.start();
+
                     }catch(Throwable ex){
                         ex.printStackTrace();
                     }
-                    switchView("category2_view");
+
                 }
         );
         loginView.widthProperty.bind(scene.widthProperty());
