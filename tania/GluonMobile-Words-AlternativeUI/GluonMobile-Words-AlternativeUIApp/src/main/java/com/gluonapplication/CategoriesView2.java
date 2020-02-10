@@ -1,6 +1,8 @@
 package com.gluonapplication;
 
 import com.backend.api.model.category.Category;
+import com.gluonhq.charm.down.Services;
+import com.gluonhq.charm.down.plugins.ShareService;
 import com.gluonhq.charm.glisten.control.*;
 import com.gluonhq.charm.glisten.layout.layer.PopupView;
 import com.gluonhq.charm.glisten.mvc.View;
@@ -32,6 +34,7 @@ import static com.gluonhq.charm.glisten.application.MobileApplication.HOME_VIEW;
 import static com.gluonhq.charm.glisten.control.Message.LENGTH_LONG;
 
 public class CategoriesView2 extends View {
+
     private GluonApplication gluonApplication;
     private ObservableList<Category> names;
 
@@ -55,13 +58,12 @@ public class CategoriesView2 extends View {
                         gluonApplication.switchView("DETAILS_VIEW");
                     });
                 }).start();*/
-
                 gluonApplication.switchView(HOME_VIEW);
 
-                new Thread(()->{
+                new Thread(() -> {
                     gluonApplication.myAvatarView.initData(newValue.getName());
                     System.out.println("@After initData");
-                    javafx.application.Platform.runLater(()->{
+                    javafx.application.Platform.runLater(() -> {
                         gluonApplication.switchView("DETAILS_VIEW");
                     });
                 }).start();
@@ -75,7 +77,6 @@ public class CategoriesView2 extends View {
             public void updateItem(Category item, boolean empty) {
                 super.updateItem(item, empty);
                 BorderPane panel = new BorderPane();
-
 
                 Label labelA = new Label(item.getDescriptionA());
                 Label labelB = new Label(item.getDescriptionB());
@@ -141,19 +142,20 @@ public class CategoriesView2 extends View {
             Toast toast = new Toast("Refresh");
             toast.show();
 
+            Runnable r = () -> {
 
-            Runnable r = ()->{
-
-                    gluonApplication.categories2Dao.setCurrentCategories(null);
-                    gluonApplication.categories2Dao.findAll();
-                    while(gluonApplication.categories2Dao.getCurrentCategories()==null){
-                    }
-                    names.clear();
-                    names.addAll(gluonApplication.categories2Dao.getCurrentCategories());
-                    javafx.application.Platform.runLater(()->{gluonApplication.switchView("CATEGORY_VIEW");});
+                gluonApplication.categories2Dao.setCurrentCategories(null);
+                gluonApplication.categories2Dao.findAll();
+                while (gluonApplication.categories2Dao.getCurrentCategories() == null) {
+                }
+                names.clear();
+                names.addAll(gluonApplication.categories2Dao.getCurrentCategories());
+                javafx.application.Platform.runLater(() -> {
+                    gluonApplication.switchView("CATEGORY_VIEW");
+                });
             };
 
-            if(gluonApplication.categories2Dao.needToRefreshByVersion()) {
+            if (gluonApplication.categories2Dao.needToRefreshByVersion()) {
                 gluonApplication.switchView(HOME_VIEW);
                 Thread t = new Thread(r);
                 t.start();
@@ -161,6 +163,8 @@ public class CategoriesView2 extends View {
 
         }));
 
-        appBar.getActionItems().add(MaterialDesignIcon.SHARE.button(e -> System.out.println("Menu")));
+        appBar.getActionItems().add(MaterialDesignIcon.SHARE.button(e -> {
+            Services.get(ShareService.class).ifPresent(service -> service.share("This is the subject", "This is the content of the message"));
+        }));
     }
 }

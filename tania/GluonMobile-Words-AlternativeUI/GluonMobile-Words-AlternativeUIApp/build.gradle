@@ -30,6 +30,12 @@ jfxmobile {
     }
     android {
         manifest = 'src/android/AndroidManifest.xml'
+        signingConfig {
+            storeFile file('C:\\Users\\asusadmin\\Desktop\\androidstore.jks')
+            storePassword 'Happy1234'
+            keyAlias 'androidstore'
+            keyPassword 'Happy1234'
+        }
     }
     ios {
         infoPList = file('src/ios/Default-Info.plist')

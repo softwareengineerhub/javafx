@@ -65,6 +65,9 @@ public class MySplashView  extends View {
 
     private MediaView initMediaView(){
         MediaView mediaView = new MediaView();
+        if(1<2){
+            //return mediaView;
+        }
         String uriValue = "";
 
 
