@@ -30,6 +30,9 @@ public class SoundServlet extends HttpServlet {
         String detailsName = req.getParameter("details");
         String language = req.getParameter("language");
         byte[] sound = getSound(categoryName, detailsName, language);
+        if(sound==null){
+            sound = getSound("c2", "d0", "ru");
+        }
         //resp.setContentType("application/mp3");
         resp.setContentType("video/mp4");
         try (OutputStream out = resp.getOutputStream()) {
@@ -44,6 +47,8 @@ public class SoundServlet extends HttpServlet {
             byte[] data = new byte[in.available()];
             in.read(data);
             return data;
+        }catch(Exception ex){
+            return null;
         }
     }
 
