@@ -1,35 +1,12 @@
 package com.gluonapplication;
 
-import com.gluonhq.charm.down.Platform;
-import com.gluonhq.charm.glisten.application.GlassPane;
 import com.gluonhq.charm.glisten.application.MobileApplication;
-import com.gluonhq.charm.glisten.control.Avatar;
 import com.gluonhq.charm.glisten.control.ProgressIndicator;
-import com.gluonhq.charm.glisten.layout.Layer;
-import com.gluonhq.charm.glisten.mvc.SplashView;
 import com.gluonhq.charm.glisten.visual.Swatch;
 import com.middleware.Categories2Dao;
 import com.middleware.Details2Dao;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GluonApplication extends MobileApplication {
@@ -63,10 +40,6 @@ public class GluonApplication extends MobileApplication {
         ((Stage) scene.getWindow()).getIcons().add(new Image(GluonApplication.class.getResourceAsStream("/icon.png")));
     }
 
-    /*public void mySwitch(String viewName){
-        System.out.println("Here");
-        showMessage("qqqqqqqqqqqqqqqqq");
-    }*/
-
+   
 
 }

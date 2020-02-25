@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Categories2Dao {
     private ServerClient serverClient;
-    private String host = "134.209.244.234";
+    private String host = AppConfig.HOST;
     private int port = 8083;
     private volatile List<Category> currentCategories;
     private volatile int version;
@@ -28,10 +28,8 @@ public class Categories2Dao {
 
                 messageData = new MessageData();
                 messageData.setCategoryRequest(true);
-                serverClient = new ServerClientImpl(host, port);
-                System.out.println("@Before read categories");
-                currentCategories = (List<Category>) serverClient.readData(messageData);
-                System.out.println("@After  read categories: "+currentCategories);
+                serverClient = new ServerClientImpl(host, port);               
+                currentCategories = (List<Category>) serverClient.readData(messageData);                
 
             }
         };

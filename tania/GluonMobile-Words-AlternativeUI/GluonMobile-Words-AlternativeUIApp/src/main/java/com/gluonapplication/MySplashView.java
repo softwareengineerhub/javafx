@@ -1,5 +1,7 @@
 package com.gluonapplication;
 
+import com.gluonhq.charm.down.Services;
+import com.gluonhq.charm.down.plugins.VideoService;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.ProgressIndicator;
 import com.gluonhq.charm.glisten.mvc.View;
@@ -23,6 +25,8 @@ import javafx.scene.paint.Color;
 
 import java.net.URI;
 import java.nio.file.Paths;
+import java.util.Optional;
+import javafx.scene.Node;
 
 public class MySplashView  extends View {
 
@@ -31,16 +35,18 @@ public class MySplashView  extends View {
 
     public DoubleProperty heightProperty = new SimpleDoubleProperty();
     public DoubleProperty widthProperty = new SimpleDoubleProperty();
+    private boolean isFirst =true;
 
 
     public MySplashView(GluonApplication gluonApplication) {
         gluonApplication.categories2Dao.findAll();
         this.gluonApplication=gluonApplication;
         makeBinding();
-        MediaView mediaView = initMediaView();
+        //Node mediaView = initMediaView();
         ProgressIndicator p1 = initProgressIndicator();
-
-        AnchorPane anchorPane = new AnchorPane(mediaView, initPane(p1));
+     //   initMediaView();
+        //AnchorPane anchorPane = new AnchorPane(mediaView, initPane(p1));
+        AnchorPane anchorPane = new AnchorPane(initPane(p1));
         setCenter(anchorPane);
 
         Runnable r = ()->{
@@ -62,8 +68,26 @@ public class MySplashView  extends View {
         pi.setRadius(45);
         return pi;
     }
+    
+    private void initMediaView(){
+        Optional<VideoService> videoService = Services.get(VideoService.class);
+        videoService.ifPresent(video -> {
+            if(isFirst){
+            //video.setFullScreen(true);
+            video.setPosition(Pos.CENTER, 0, widthProperty.getValue(), 0, heightProperty.getValue());
+            //video.setControlsVisible(true);
+            video.setLooping(true);
+            video.getPlaylist().add("background.mp4");
+            }
+            video.show();
+            video.play();            
+            
+            //mediaView.fitHeightProperty().bind(heightProperty);
+        });
+        //return videoService.get();
+    }
 
-    private MediaView initMediaView(){
+    private MediaView initMediaView2(){
         MediaView mediaView = new MediaView();
         if(1<2){
             //return mediaView;
@@ -116,10 +140,7 @@ public class MySplashView  extends View {
 
     @Override
     protected void updateAppBar(AppBar appBar) {
-        appBar.setVisible(false);
-        appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> System.out.println("Menu")));
-        appBar.setTitleText("Basic View");
-        appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> System.out.println("Search")));
+        appBar.setVisible(false);       
     }
 
 

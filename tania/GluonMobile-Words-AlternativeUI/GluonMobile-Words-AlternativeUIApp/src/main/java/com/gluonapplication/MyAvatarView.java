@@ -4,6 +4,7 @@ import com.backend.api.model.details.Details;
 import com.backend.api.model.details.sound.SoundApi;
 import com.backend.api.model.details.sound.SoundApiImpl;
 import com.gluonhq.charm.down.Services;
+import com.gluonhq.charm.down.plugins.ShareService;
 import com.gluonhq.charm.down.plugins.VideoService;
 import com.gluonhq.charm.glisten.control.*;
 import com.gluonhq.charm.glisten.mvc.View;
@@ -34,12 +35,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyAvatarView extends View {
+
     private GluonApplication gluonApplication;
     private List<Details> list;
     private ObservableList<Details> speakers;
     private AvatarPane<Details> avatarPane;
     private int currentPage;
-    private int step=4;
+    private int step = 4;
     private AppBar appBar;
     private String categoryName;
     private SoundApi soundApi;
@@ -51,8 +53,8 @@ public class MyAvatarView extends View {
         setBottom(createBottom());
     }
 
-    public void initData(String categoryName){
-        this.categoryName=categoryName;
+    public void initData(String categoryName) {
+        this.categoryName = categoryName;
         list.clear();
         list.addAll(gluonApplication.details2Dao.findAllDetails(categoryName));
         speakers = FXCollections.observableList(list.subList(0, Math.min(step, list.size())));
@@ -71,8 +73,6 @@ public class MyAvatarView extends View {
                     ex.printStackTrace();
                 }
             }
-
-
 
             Image image = speaker.getImage();
 
@@ -100,7 +100,6 @@ public class MyAvatarView extends View {
             return container;
         });*/
         //avatarPane.styleProperty().set("-fx-background-color: linear (0%,0%) to (100%,100%) stops (0.0,#14C9CB) (1.0,aqua);");
-
         Font font = Font.font("Comic Sans MS", FontWeight.BOLD, 15);
         avatarPane.setContentFactory(speaker -> {
             BorderPane container = new BorderPane();
@@ -120,13 +119,12 @@ public class MyAvatarView extends View {
 
             ImageView imageView = new ImageView(speaker.getImage());
 
-            double value = Math.min(avatarPane.getHeight()*0.7, avatarPane.getWidth()*0.7);
+            double value = Math.min(avatarPane.getHeight() * 0.7, avatarPane.getWidth() * 0.7);
             imageView.setFitHeight(value);
             imageView.setFitWidth(value);
             center.getChildren().addAll(imageView);
 
-
-            Insets insets = new Insets(10,10,10,10);
+            Insets insets = new Insets(10, 10, 10, 10);
             HBox topCh = new HBox(10);
             topCh.setAlignment(Pos.CENTER);
             topCh.getChildren().addAll(name, jobTitle);
@@ -139,7 +137,6 @@ public class MyAvatarView extends View {
             top.setPadding(insets);
             top.getChildren().addAll(topCh, topOther);
 
-
             HBox bottom = new HBox(20);
             bottom.setPadding(insets);
             bottom.setAlignment(Pos.CENTER);
@@ -148,9 +145,8 @@ public class MyAvatarView extends View {
             Node imgChina = initBottomImageWithAction("/China.png", "ch");
             Node imgRussia = initBottomImageWithAction("/Russia.png", "ru");
 
-
             bottom.getChildren().addAll(imgUK, imgChina, imgRussia);
-           // bottom.styleProperty().set("-fx-background-color: linear (0%,0%) to (100%,100%) stops (0.0,#14C9CB) (1.0,aqua);");
+            // bottom.styleProperty().set("-fx-background-color: linear (0%,0%) to (100%,100%) stops (0.0,#14C9CB) (1.0,aqua);");
 
             container.setTop(top);
             container.setCenter(center);
@@ -161,26 +157,21 @@ public class MyAvatarView extends View {
             return container;
         });
 
-
-
-
         setCenter(avatarPane);
-       // avatarPane.styleProperty().set("-fx-background-color: gray;");
+        // avatarPane.styleProperty().set("-fx-background-color: gray;");
 
     }
-
-
 
     private BottomNavigation createBottom() {
         BottomNavigation bottomNavigation = new BottomNavigation();
 
         BottomNavigationButton btn1 = new BottomNavigationButton();
         btn1.setGraphic(new Icon(MaterialDesignIcon.NAVIGATE_BEFORE));
-        btn1.setOnAction(e->{
-            if(currentPage>0){
+        btn1.setOnAction(e -> {
+            if (currentPage > 0) {
                 currentPage--;
-                avatarPane.setItems(FXCollections.observableList(list.subList(currentPage*step, currentPage*step+step)));
-                if(!avatarPane.getItems().isEmpty()) {
+                avatarPane.setItems(FXCollections.observableList(list.subList(currentPage * step, currentPage * step + step)));
+                if (!avatarPane.getItems().isEmpty()) {
                     avatarPane.setValue(avatarPane.getItems().get(0));
                 }
             }
@@ -188,15 +179,15 @@ public class MyAvatarView extends View {
 
         BottomNavigationButton btn2 = new BottomNavigationButton();
         btn2.setGraphic(new Icon(MaterialDesignIcon.HOME));
-        btn2.setOnAction(e -> gluonApplication.switchView("CATEGORY_VIEW") );
+        btn2.setOnAction(e -> gluonApplication.switchView("CATEGORY_VIEW"));
 
         BottomNavigationButton btn3 = new BottomNavigationButton();
         btn3.setGraphic(new Icon(MaterialDesignIcon.NAVIGATE_NEXT));
-        btn3.setOnAction(e->{
-            if((currentPage+1)*step<list.size()){
+        btn3.setOnAction(e -> {
+            if ((currentPage + 1) * step < list.size()) {
                 currentPage++;
-                avatarPane.setItems(FXCollections.observableList(list.subList(currentPage*step, Math.min(currentPage*step+step, list.size()))));
-                if(!avatarPane.getItems().isEmpty()) {
+                avatarPane.setItems(FXCollections.observableList(list.subList(currentPage * step, Math.min(currentPage * step + step, list.size()))));
+                if (!avatarPane.getItems().isEmpty()) {
                     avatarPane.setValue(avatarPane.getItems().get(0));
                 }
             }
@@ -210,40 +201,43 @@ public class MyAvatarView extends View {
         StackPane stackPane = new StackPane();
         Image img = new Image(getClass().getResourceAsStream(imgPath));
         ImageView imageView = new ImageView(img);
-        double value = avatarPane.getWidth()/7+7;
+        double value = avatarPane.getWidth() / 7 + 7;
         imageView.setFitHeight(value);
-        imageView.setFitWidth(value*1.2);
+        imageView.setFitWidth(value * 1.2);
         stackPane.getChildren().add(imageView);
         final String cssDefault = "-fx-border-color: black; -fx-border-width: 1;";
         stackPane.setStyle(cssDefault);
 
         imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
-                    if (avatarPane.getItems() == null || avatarPane.getItems().isEmpty()) {
-                        return;
-                    }
-                    int selectedIndex = avatarPane.getItems().indexOf(avatarPane.getValue());
-                    String url = soundApi.getUrl(categoryName, "d"+selectedIndex, language);
-                    Services.get(VideoService.class).ifPresent(video -> {
-                        try {
-                            video = video.getClass().newInstance();
-                            video.stop();
-                            video.getPlaylist().clear();
-                            video.getPlaylist().add(url);
-                            video.play();
-                        }catch(Throwable th){
+            if (avatarPane.getItems() == null || avatarPane.getItems().isEmpty()) {
+                return;
+            }
+            int selectedIndex = avatarPane.getItems().indexOf(avatarPane.getValue());
+            String url = soundApi.getUrl(categoryName, "d" + selectedIndex, language);
+            Services.get(VideoService.class).ifPresent(video -> {
+                try {
+                    video = video.getClass().newInstance();
+                    video.stop();
+                    video.getPlaylist().clear();
+                    video.getPlaylist().add(url);
+                    video.play();
+                } catch (Throwable th) {
 
-                        }
-                    });
                 }
+            });
+        }
         );
 
         return stackPane;
     }
 
-
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setTitleText("Happy Learning");
-        appBar.getActionItems().add(MaterialDesignIcon.SHARE.button(e -> System.out.println("l")));
+        appBar.getActionItems().add(MaterialDesignIcon.SHARE.button(e -> {
+
+            Services.get(ShareService.class).ifPresent(service -> service.share("This is the subject", "This is the content of the message"));
+
+        }));
     }
 }

@@ -4,26 +4,18 @@ import com.backend.api.model.category.Category;
 import com.gluonhq.charm.down.Services;
 import com.gluonhq.charm.down.plugins.ShareService;
 import com.gluonhq.charm.glisten.control.*;
-import com.gluonhq.charm.glisten.layout.layer.PopupView;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
-import com.gluonhq.impl.charm.a.b.b.g;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -31,7 +23,6 @@ import javafx.scene.paint.Color;
 import java.io.*;
 
 import static com.gluonhq.charm.glisten.application.MobileApplication.HOME_VIEW;
-import static com.gluonhq.charm.glisten.control.Message.LENGTH_LONG;
 
 public class CategoriesView2 extends View {
 
@@ -46,13 +37,13 @@ public class CategoriesView2 extends View {
         charmListView.selectedItemProperty().addListener(new ChangeListener<Category>() {
             @Override
             public void changed(ObservableValue<? extends Category> observable, Category oldValue, Category newValue) {
-                System.out.println(newValue.getName());
+                
 
                 /*gluonApplication.showLayer("DETAILS_LOAD_LAYER");
 
                 new Thread(()->{
                     gluonApplication.myAvatarView.initData(newValue.getName());
-                    System.out.println("@After initData");
+                    
                     javafx.application.Platform.runLater(()->{
                         gluonApplication.hideLayer("DETAILS_LOAD_LAYER");
                         gluonApplication.switchView("DETAILS_VIEW");
@@ -62,7 +53,7 @@ public class CategoriesView2 extends View {
 
                 new Thread(() -> {
                     gluonApplication.myAvatarView.initData(newValue.getName());
-                    System.out.println("@After initData");
+                    
                     javafx.application.Platform.runLater(() -> {
                         gluonApplication.switchView("DETAILS_VIEW");
                     });
@@ -136,7 +127,7 @@ public class CategoriesView2 extends View {
     protected void updateAppBar(AppBar appBar) {
         appBar.setVisible(true);
         appBar.setTitleText("Choose Category to Learn");
-        //appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> System.out.println("Menu")));
+        
         appBar.getActionItems().add(MaterialDesignIcon.REFRESH.button(e -> {
 
             Toast toast = new Toast("Refresh");

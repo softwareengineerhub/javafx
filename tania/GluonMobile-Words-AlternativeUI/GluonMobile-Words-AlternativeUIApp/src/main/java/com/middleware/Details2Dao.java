@@ -13,7 +13,7 @@ public class Details2Dao {
 
     private List<Details> lastVisited;
     private ServerClient serverClient;
-    private String host = "134.209.244.234";
+    private String host = AppConfig.HOST;
     private int port = 8083;
 
     public void cleanup(){
