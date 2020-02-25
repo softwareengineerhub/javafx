@@ -27,17 +27,11 @@ public class FirstScreen extends MobileApplication {
     public Categories2Dao categoriesDao2 = new Categories2Dao();
 
 
-
-
     private Category2View categoryView2 = new Category2View(this);
     public DetailsDao2 detailsDao2 = new DetailsDao2();
 
     @Override
     public void init() {
-
-
-
-
 
 
         addViewFactory(HOME_VIEW, () -> {
@@ -56,7 +50,7 @@ public class FirstScreen extends MobileApplication {
             return detailsView2;
         });
 
-        addLayerFactory("DataLoad", ()->{
+        addLayerFactory("DataLoad", () -> {
             ProgressIndicator pi = new ProgressIndicator();
             pi.setRadius(45);
             return LayerFactory.createLayer(pi);
@@ -86,25 +80,31 @@ public class FirstScreen extends MobileApplication {
      */
 
 
-
-
     @Override
     public void postInit(Scene scene) {
         loginView.startBtn.setOnAction(e -> {
+
+
+
                     try {
                         MobileApplication.getInstance().showLayer("DataLoad");
-                        Runnable r = ()->{
-                            categoryView2.refreshFirst();
-                            javafx.application.Platform.runLater(()->{
-                                switchView("category2_view");
-                                MobileApplication.getInstance().hideLayer("DataLoad");
-                            });
+                        Runnable r = () -> {
+
+                            boolean needToRefresh = categoriesDao2.needToRefreshByVersion();
+
+                                categoryView2.refreshFirst(needToRefresh);
+
+                                javafx.application.Platform.runLater(() -> {
+                                    switchView("category2_view");
+                                    MobileApplication.getInstance().hideLayer("DataLoad");
+                                });
+
                         };
 
                         Thread t = new Thread(r);
                         t.start();
 
-                    }catch(Throwable ex){
+                    } catch (Throwable ex) {
                         ex.printStackTrace();
                     }
 
@@ -113,11 +113,11 @@ public class FirstScreen extends MobileApplication {
         loginView.widthProperty.bind(scene.widthProperty());
         loginView.heightProperty.bind(scene.heightProperty());
 
-      //  detailsView.widthProperty.bind(scene.widthProperty());
-      //  detailsView.heightProperty.bind(scene.heightProperty());
+        //  detailsView.widthProperty.bind(scene.widthProperty());
+        //  detailsView.heightProperty.bind(scene.heightProperty());
 
-       // categoryView.widthProperty.bind(scene.widthProperty());
-       // categoryView.heightProperty.bind(scene.heightProperty());
+        // categoryView.widthProperty.bind(scene.widthProperty());
+        // categoryView.heightProperty.bind(scene.heightProperty());
 
         categoryView2.widthProperty.bind(scene.widthProperty());
         categoryView2.heightProperty.bind(scene.heightProperty());

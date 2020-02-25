@@ -107,9 +107,7 @@ public class DetailsView extends View {
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setVisible(false);
-        //appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> System.out.println("Menu")));
-        appBar.setTitleText("Basic View");
-        //appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> System.out.println("Search")));
+
     }
 
     private HBox initBottomContent() {

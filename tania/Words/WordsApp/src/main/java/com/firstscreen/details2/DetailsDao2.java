@@ -1,5 +1,6 @@
 package com.firstscreen.details2;
 
+import com.backend.api.config.AppConfig;
 import com.backend.api.model.category.Category;
 import com.backend.api.model.details.Details;
 import com.backend.api.server.client.ServerClient;
@@ -20,7 +21,8 @@ public class DetailsDao2 {
     private ServerClient serverClient;
     //private String host = "127.0.0.1";
     //private String host = "52.39.234.36";
-    private String host = "134.209.244.234";
+    //private String host = "134.209.244.234";
+    private String host = AppConfig.HOST;
 
 
     private int port = 8083;

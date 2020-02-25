@@ -40,11 +40,16 @@ public class Category2View extends View {
     public Category2View(FirstScreen mobileApplication){
         this.mobileApplication=mobileApplication;
         displayShelf = new CategoryShelf(topText, bottomText, mobileApplication);
+        mobileApplication.categoriesDao2.callForVersion();
         mobileApplication.categoriesDao2.findAll();
       //  this.categoriesList = mobileApplication.categoriesDao2.getCurrentCategories();
     }
 
-    public void refreshFirst() {
+    public void refreshFirst(boolean needToRefresh) {
+        if(needToRefresh){
+            mobileApplication.categoriesDao2.setCurrentCategories(null);
+            mobileApplication.categoriesDao2.findAll();
+        }
         while(mobileApplication.categoriesDao2.getCurrentCategories()==null){
 
         }

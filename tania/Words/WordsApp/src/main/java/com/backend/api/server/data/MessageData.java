@@ -9,6 +9,7 @@ public class MessageData implements Serializable {
     private String categoryName;
     private String name;
     private int detailsIndex = -1;
+    private boolean categoryVersionRequest;
 
     public boolean isCategoryRequest() {
         return categoryRequest;
@@ -40,5 +41,13 @@ public class MessageData implements Serializable {
 
     public void setDetailsIndex(int detailsIndex) {
         this.detailsIndex = detailsIndex;
+    }
+
+    public boolean isCategoryVersionRequest() {
+        return categoryVersionRequest;
+    }
+
+    public void setCategoryVersionRequest(boolean categoryVersionRequest) {
+        this.categoryVersionRequest = categoryVersionRequest;
     }
 }

@@ -108,11 +108,10 @@ public class Details2View extends View {
 
     private VBox initCentralContent() {
         if (selectedIndex == 0) {
-            System.out.println("category.getName()=" + category.getName());
-            System.out.println("selected index = 0");
+
             flowPane.getChildren().clear();
             details = category.getFirstDetails();
-            System.out.println("details=" + details);
+
 
             if (details.getImage() == null) {
                 byte[] data = details.getImageData();
@@ -349,7 +348,6 @@ public class Details2View extends View {
 
 
                     String url = soundApi.getUrl(category.getName(), "d" + selectedIndex, language);
-                    //        System.out.println("url="+url);
 
                     com.gluonhq.charm.glisten.control.Alert alert = new com.gluonhq.charm.glisten.control.Alert(Alert.AlertType.INFORMATION);
 
