@@ -15,6 +15,7 @@ import java.util.List;
 public class CategoryCacheImpl implements CategoryCache {
 
     private List<Category> categories;
+    private int version;
 
     @Override
     public List<Category> findAll() {
@@ -26,4 +27,13 @@ public class CategoryCacheImpl implements CategoryCache {
         this.categories = catrgories;
     }
 
+    @Override
+    public int getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(int version) {
+        this.version = version;
+    }
 }

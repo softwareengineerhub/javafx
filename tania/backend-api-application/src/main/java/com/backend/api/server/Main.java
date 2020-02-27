@@ -35,9 +35,12 @@ import java.util.concurrent.Future;
  */
 public class Main {
 
-    private static ExecutorService executorService = Executors.newCachedThreadPool();
+    private static ExecutorService executorService = Executors.newFixedThreadPool(10);
 
     public static void main(String[] args) throws Exception {
+        System.out.println("AT:"+System.getProperty("ACCESS_TOKEN"));
+
+
         System.setProperty("file.encoding", "UTF-8");
         System.out.println(Charset.defaultCharset());
         // System.setOut(new PrintStream(new File("log.txt")));
@@ -76,6 +79,7 @@ public class Main {
     private static void initCategoryCache(CategoryCache categoryCache, CategoryPersistence categoryPersistence) {
         long start = System.currentTimeMillis();
         categoryCache.updateAll(categoryPersistence.findAll());
+        categoryCache.setVersion(categoryPersistence.version());
         System.out.println("category cache created: " + (System.currentTimeMillis() - start));
     }
 

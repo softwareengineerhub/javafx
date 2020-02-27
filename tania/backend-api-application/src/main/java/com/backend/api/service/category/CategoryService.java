@@ -13,7 +13,9 @@ import java.util.List;
  * @author Denys.Prokopiuk
  */
 public interface CategoryService {
-    
+
     public List<Category> getAllCategories();
-    
+
+    public int version();
+
 }

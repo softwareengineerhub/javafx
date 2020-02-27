@@ -13,7 +13,9 @@ import java.util.List;
  * @author Denys.Prokopiuk
  */
 public interface CategoryPersistence {
-    
+
     public List<Category> findAll();
-    
+
+    public int version();
+
 }

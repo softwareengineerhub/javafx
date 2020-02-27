@@ -18,4 +18,9 @@ public interface CategoryCache {
 
     public void updateAll(List<Category> catrgories);
 
+    public int getVersion();
+
+    public void setVersion(int version);
+
+
 }

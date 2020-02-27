@@ -56,6 +56,12 @@ public class BackendApiServer extends Thread {
     private Object processIncommingMessage(MessageData messageData) {
         String categoryName = messageData.getCategoryName();
         String name = messageData.getName();
+        if(messageData.isCategoryVersionRequest()){
+            return categoryService.version();
+        }
+
+
+
         if (messageData.isCategoryRequest()) {
             return categoryService.getAllCategories();
         } else  {          

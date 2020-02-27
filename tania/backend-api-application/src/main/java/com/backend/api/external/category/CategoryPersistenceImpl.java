@@ -77,6 +77,11 @@ public class CategoryPersistenceImpl implements CategoryPersistence {
         return new ArrayList<>();
     }
 
+    @Override
+    public int version() {
+        return 0;
+    }
+
     private Properties loadProperties(DbxClientV2 client) throws Exception {
         Properties props = new Properties();
         String filePath = "/categories/categories.properties";

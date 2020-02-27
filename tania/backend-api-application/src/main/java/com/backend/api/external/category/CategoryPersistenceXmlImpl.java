@@ -36,6 +36,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class CategoryPersistenceXmlImpl implements CategoryPersistence {
 
     private String ACCESS_TOKEN = System.getProperty("ACCESS_TOKEN");
+    private int version;
 
     @Override
     public List<Category> findAll() {
@@ -102,6 +103,11 @@ public class CategoryPersistenceXmlImpl implements CategoryPersistence {
         return new ArrayList<>();
     }
 
+    @Override
+    public int version() {
+        return version;
+    }
+
     private Map<String, Map<String, String>> parseXmlData(String xml) throws Exception {
         Map<String, Map<String, String>> map = new HashMap<>();
         try (InputStream in = new ByteArrayInputStream(xml.getBytes())) {            
@@ -126,10 +132,17 @@ public class CategoryPersistenceXmlImpl implements CategoryPersistence {
                 public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
                     prevTag = currentTag;
                     currentTag = qName;
+
+                    if(currentTag.equalsIgnoreCase("categories")){
+                        version = Integer.parseInt(attributes.getValue("version")+"");
+                    }
+
                     if(currentTag.equalsIgnoreCase("category")){
                         id = attributes.getValue("id");
                         map.put(id, new HashMap<>());                        
                     }
+
+
                     
                 }
                 

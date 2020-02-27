@@ -26,4 +26,9 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryCache.findAll();
     }
 
+    @Override
+    public int version() {
+        return categoryCache.getVersion();
+    }
+
 }
