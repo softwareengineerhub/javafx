@@ -96,3 +96,11 @@
 /tania/Words/WordsApp/out
 /tania/Words/WordsApp/private
 /tania/GluonMobile-Words-AlternativeUI/.nb-gradle/
+/tania/smart/smart-backend-api-application/target
+/tania/smart/smart-backend-api-application/.idea
+/tania/smart/smart-backend-api-application/dependency-reduced-pom.xml
+/tania/smart/smart-backend-api-application/smart-backend-api-application.iml
+/tania/smart/SmartWords/SmartWordsApp/build
+/tania/smart/SmartWords/.idea
+/tania/smart/SmartWords/SmartWords.iml
+/tania/smart/SmartWords/.gradle
