@@ -1,0 +1,104 @@
+package com.backend.api.repository.xml.content;
+
+import com.backend.api.model.details.Details;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class C62 {
+
+    public List<Details> detailsList = new ArrayList<>();
+
+    {
+        Details details = new Details();
+        details.setDescriptionA("yuè fèn");
+        details.setDescriptionB("月份");
+        details.setDescriptionC("Months of the year");
+        details.setDescriptionD("Месяцы года");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA("nián ");
+        details.setDescriptionB("年");
+        details.setDescriptionC("Year");
+        details.setDescriptionD("Год");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA("rì lì ");
+        details.setDescriptionB("日历");
+        details.setDescriptionC("Сalendar ");
+        details.setDescriptionD("Календарь ");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" yī yuè  ");
+        details.setDescriptionB("1月/一月");
+        details.setDescriptionC("January");
+        details.setDescriptionD("Январь");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" èr yuè ");
+        details.setDescriptionB("2月/二月");
+        details.setDescriptionC("February");
+        details.setDescriptionD("Февраль");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" sān yuè ");
+        details.setDescriptionB("3月/三月");
+        details.setDescriptionC("March");
+        details.setDescriptionD("Март");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" sì yuè ");
+        details.setDescriptionB("4月/四月");
+        details.setDescriptionC("April");
+        details.setDescriptionD("Апрель");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" wǔ yuè ");
+        details.setDescriptionB("5月/五月");
+        details.setDescriptionC("May");
+        details.setDescriptionD("Май");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" liù yuè ");
+        details.setDescriptionB("6月/六月");
+        details.setDescriptionC("June");
+        details.setDescriptionD("Июнь");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" qī yuè ");
+        details.setDescriptionB("7月/七月");
+        details.setDescriptionC("July");
+        details.setDescriptionD("Июль");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" bā yuè ");
+        details.setDescriptionB("8月/八月");
+        details.setDescriptionC("August");
+        details.setDescriptionD("Август");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" jiǔ yuè ");
+        details.setDescriptionB("9月/九月");
+        details.setDescriptionC("September");
+        details.setDescriptionD("Сентябрь");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" shí yuè ");
+        details.setDescriptionB("10月/十月");
+        details.setDescriptionC("October");
+        details.setDescriptionD("Октябрь");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" shí yī yuè ");
+        details.setDescriptionB("11月/十一月");
+        details.setDescriptionC("November");
+        details.setDescriptionD("Ноябрь");
+        detailsList.add(details);
+        details = new Details();
+        details.setDescriptionA(" shí èr yuè ");
+        details.setDescriptionB("12月/十二月");
+        details.setDescriptionC("December");
+        details.setDescriptionD("Декабрь");
+        detailsList.add(details);
+    }
+}
