@@ -33,6 +33,10 @@ public class MainApp extends JProApplication {
     StackPane root = new StackPane();
 
 
+    public MainApp() {
+
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         //BorderPane root = new BorderPane();
