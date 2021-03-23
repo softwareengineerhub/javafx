@@ -1,0 +1,43 @@
+2021-03-22 21:55:40,687 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-3 - Slf4jLogger started
+2021-03-22 21:55:41,189 [INFO] from com.jpro.activity in Thread-0 - Starting the server
+2021-03-22 21:55:41,190 [INFO] from com.jpro.internal.server.Initializer$ in Thread-0 -  *** Starting JPro: https://www.jpro.one/ ***
+2021-03-22 21:55:41,190 [INFO] from com.jpro.internal.server.Initializer$ in Thread-0 - OS: Windows 10
+2021-03-22 21:55:41,256 [INFO] from com.jpro.internal.server.Initializer$ in Thread-0 - JPro: 2019.1.0
+2021-03-22 21:55:41,256 [INFO] from com.jpro.internal.server.Initializer$ in Thread-0 - Java version: 1.8.0_211
+2021-03-22 21:55:41,256 [INFO] from com.jpro.internal.server.Initializer$ in Thread-0 - JVM: 1.8.0_211 Oracle Corporation
+2021-03-22 21:55:41,294 [INFO] from com.jpro.internal.server.Initializer$ in Thread-0 - redirected OUT / ERR
+2021-03-22 21:55:41,294 [INFO] from com.jpro.internal.server.Initializer$ in Thread-0 - installed SLF4JBridge
+2021-03-22 21:55:41,376 [INFO] from com.jpro.internal.server.MonocleInitializer$ in Thread-0 - screen: null
+2021-03-22 21:55:43,154 [INFO] from com.jpro.internal.server.Initializer$ in Thread-0 - finished init!
+2021-03-22 21:55:43,236 [INFO] from com.jpro.internal.server.Initializer$ in JavaFX Application Thread - JavaFX version: 8.0.211-b10
+2021-03-22 21:55:43,275 [INFO] from com.jpro.internal.chart.model.DynamicDataModel in JavaFX Application Thread - Started Monitoring chart data...
+2021-03-22 21:55:43,615 [INFO] from com.jpro.internal.chart.model.ChartJSONImExporter in JavaFX Application Thread - Nothing to import
+2021-03-22 21:55:44,226 [INFO] from play.api.Play in Thread-0 - Application started (Prod)
+2021-03-22 21:55:46,371 [INFO] from play.core.server.AkkaHttpServer in Thread-0 - Listening for HTTP on /0:0:0:0:0:0:0:0:8080
+2021-03-22 21:55:48,924 [INFO] from controllers.jpro in application-akka.actor.default-dispatcher-8 - application requested: 0!default
+2021-03-22 21:55:49,043 [INFO] from controllers.jpro in application-akka.actor.default-dispatcher-8 - Creating Application: 0!default
+2021-03-22 21:55:49,047 [INFO] from controllers.jpro in application-akka.actor.default-dispatcher-8 - remoteAddress 0:0:0:0:0:0:0:1
+2021-03-22 21:55:49,047 [INFO] from controllers.jpro in application-akka.actor.default-dispatcher-8 - host          localhost:8080
+2021-03-22 21:55:49,048 [INFO] from controllers.jpro in application-akka.actor.default-dispatcher-8 - uri           /app/0!default
+2021-03-22 21:55:50,424 [INFO] from com.jpro.internal.server.ViewSerializerActor in JavaFX Application Thread - appdef: AppByMain(default,conferenceFX.MainApp,None,NamedClassLoader(system),false) clientinfo: ClientInfo(http://localhost:8080/,http://localhost:8080/app/default,1536.0,722.0,false,ru-UA,List(ru-UA, ru, uk-UA, en-GB, uk, en-US, en),Map())out: Actor[akka://application/system/StreamSupervisor-0/flow-7-2-actorRefSource#-1227170725]
+2021-03-22 21:55:50,741 [INFO] from com.jpro.meta.stream.Util$ in JavaFX Application Thread - workaround for image: javafx.scene.image.Image@9640881
+2021-03-22 21:55:51,043 [INFO] from com.jpro.meta.stream.Util$ in JavaFX Application Thread - workaround for image: javafx.scene.image.Image@1cdda8fe
+2021-03-22 21:55:51,083 [INFO] from com.jpro.meta.stream.Util$ in JavaFX Application Thread - workaround for image: javafx.scene.image.Image@574ac7b2
+2021-03-22 21:55:51,116 [INFO] from com.jpro.meta.stream.Util$ in JavaFX Application Thread - workaround for image: javafx.scene.image.Image@73ed19ee
+2021-03-22 21:55:51,145 [INFO] from com.jpro.meta.stream.Util$ in JavaFX Application Thread - workaround for image: javafx.scene.image.Image@e79db57
+2021-03-22 21:55:51,176 [INFO] from com.jpro.meta.stream.Util$ in JavaFX Application Thread - workaround for image: javafx.scene.image.Image@a29e0b5
+2021-03-22 21:55:51,210 [INFO] from com.jpro.meta.stream.Util$ in JavaFX Application Thread - workaround for image: javafx.scene.image.Image@17bee38c
+2021-03-22 21:55:51,239 [INFO] from com.jpro.meta.stream.Util$ in JavaFX Application Thread - workaround for image: javafx.scene.image.Image@4b5e33cc
+2021-03-22 21:55:51,305 [INFO] from com.jpro.meta.stream.Util$ in JavaFX Application Thread - workaround for image: javafx.scene.image.Image@45e742e5
+2021-03-22 21:55:51,577 [INFO] from com.jpro.JS in JavaFX Application Thread - received msg: new MainID: 653 userid: 1535373291
+2021-03-22 21:57:10,891 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - 
+2021-03-22 21:57:10,891 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - Application closed:
+2021-03-22 21:57:11,119 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - startTime      : Mon Mar 22 21:57:10 EET 2021      
+2021-03-22 21:57:11,120 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - averageLatency : 00:00:00.017 
+2021-03-22 21:57:11,120 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - averageJitter  : 00:00:00.001  
+2021-03-22 21:57:11,121 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - framerateServer: 00:00:00.000
+2021-03-22 21:57:11,122 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - framerateClient: 00:00:00.000
+2021-03-22 21:57:11,122 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - raw            : 52757
+2021-03-22 21:57:11,122 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - zipped         : 13537
+2021-03-22 21:57:11,122 [INFO] from com.jpro.internal.stats.ViewInfo$ in JavaFX Application Thread - 
+2021-03-22 21:57:42,736 [INFO] from com.jpro.internal.communicator.InstanceImpl in JavaFX Application Thread - closing window!

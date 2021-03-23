@@ -1,0 +1,5 @@
+mvn jpro:release
+
+https://www.jpro.one/?page=docs/current/3.2/RUN_JPRO_REMOTELY
+
+./bin/start.sh

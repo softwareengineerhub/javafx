@@ -1,0 +1,37 @@
+2021-03-22 21:55:43,155 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.Initializer$ - redirected OUT / ERR
+2021-03-22 21:55:43,155 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.Initializer$ - installed SLF4JBridge
+2021-03-22 21:55:43,155 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.MonocleInitializer$ - screen: null
+2021-03-22 21:55:43,155 [INFO] in scala-execution-context-global-31 - Warning: Quantum will not submit render jobs, nothing should draw
+2021-03-22 21:55:43,155 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.Initializer$ - finished init!
+2021-03-22 21:55:43,236 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.Initializer$ - JavaFX version: 8.0.211-b10
+2021-03-22 21:55:43,276 [INFO] in scala-execution-context-global-31 - [info] c.j.i.c.m.DynamicDataModel - Started Monitoring chart data...
+2021-03-22 21:55:43,616 [INFO] in scala-execution-context-global-31 - [info] c.j.i.c.m.ChartJSONImExporter - Nothing to import
+2021-03-22 21:55:44,226 [INFO] in scala-execution-context-global-31 - [info] play.api.Play - Application started (Prod)
+2021-03-22 21:55:46,372 [INFO] in scala-execution-context-global-31 - [info] p.c.s.AkkaHttpServer - Listening for HTTP on /0:0:0:0:0:0:0:0:8080
+2021-03-22 21:55:48,925 [INFO] in scala-execution-context-global-31 - [info] c.jpro - application requested: 0!default
+2021-03-22 21:55:49,043 [INFO] in scala-execution-context-global-31 - [info] c.jpro - Creating Application: 0!default
+2021-03-22 21:55:49,047 [INFO] in scala-execution-context-global-31 - [info] c.jpro - remoteAddress 0:0:0:0:0:0:0:1
+2021-03-22 21:55:49,048 [INFO] in scala-execution-context-global-31 - [info] c.jpro - host          localhost:8080
+2021-03-22 21:55:49,048 [INFO] in scala-execution-context-global-31 - [info] c.jpro - uri           /app/0!default
+2021-03-22 21:55:50,425 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewSerializerActor - appdef: AppByMain(default,conferenceFX.MainApp,None,NamedClassLoader(system),false) clientinfo: ClientInfo(http://localhost:8080/,http://localhost:8080/app/default,1536.0,722.0,false,ru-UA,List(ru-UA, ru, uk-UA, en-GB, uk, en-US, en),Map())out: Actor[akka://application/system/StreamSupervisor-0/flow-7-2-actorRefSource#-1227170725]
+2021-03-22 21:55:50,741 [INFO] in scala-execution-context-global-31 - [info] c.j.m.s.Util$ - workaround for image: javafx.scene.image.Image@9640881
+2021-03-22 21:55:51,043 [INFO] in scala-execution-context-global-31 - [info] c.j.m.s.Util$ - workaround for image: javafx.scene.image.Image@1cdda8fe
+2021-03-22 21:55:51,083 [INFO] in scala-execution-context-global-31 - [info] c.j.m.s.Util$ - workaround for image: javafx.scene.image.Image@574ac7b2
+2021-03-22 21:55:51,117 [INFO] in scala-execution-context-global-31 - [info] c.j.m.s.Util$ - workaround for image: javafx.scene.image.Image@73ed19ee
+2021-03-22 21:55:51,145 [INFO] in scala-execution-context-global-31 - [info] c.j.m.s.Util$ - workaround for image: javafx.scene.image.Image@e79db57
+2021-03-22 21:55:51,176 [INFO] in scala-execution-context-global-31 - [info] c.j.m.s.Util$ - workaround for image: javafx.scene.image.Image@a29e0b5
+2021-03-22 21:55:51,210 [INFO] in scala-execution-context-global-31 - [info] c.j.m.s.Util$ - workaround for image: javafx.scene.image.Image@17bee38c
+2021-03-22 21:55:51,241 [INFO] in scala-execution-context-global-31 - [info] c.j.m.s.Util$ - workaround for image: javafx.scene.image.Image@4b5e33cc
+2021-03-22 21:55:51,305 [INFO] in scala-execution-context-global-31 - [info] c.j.m.s.Util$ - workaround for image: javafx.scene.image.Image@45e742e5
+2021-03-22 21:55:51,577 [INFO] in scala-execution-context-global-31 - [info] com.jpro.JS - received msg: new MainID: 653 userid: 1535373291
+2021-03-22 21:57:10,891 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - 
+2021-03-22 21:57:10,892 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - Application closed:
+2021-03-22 21:57:11,120 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - startTime      : Mon Mar 22 21:57:10 EET 2021      
+2021-03-22 21:57:11,120 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - averageLatency : 00:00:00.017 
+2021-03-22 21:57:11,121 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - averageJitter  : 00:00:00.001  
+2021-03-22 21:57:11,121 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - framerateServer: 00:00:00.000
+2021-03-22 21:57:11,122 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - framerateClient: 00:00:00.000
+2021-03-22 21:57:11,123 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - raw            : 52757
+2021-03-22 21:57:11,123 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - zipped         : 13537
+2021-03-22 21:57:11,123 [INFO] in scala-execution-context-global-31 - [info] c.j.i.s.ViewInfo$ - 
+2021-03-22 21:57:42,736 [INFO] in scala-execution-context-global-58 - [info] c.j.i.c.InstanceImpl - closing window!
